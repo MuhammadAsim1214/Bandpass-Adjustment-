@@ -34,7 +34,7 @@ R2_Test_All=[]
 
 # Excel File where OLI and MSi Rrs data are provided in columns
 
-excel_file= '/Excel_File_BA.xlsx'
+excel_file = 'C:/Users/muham/Downloads/Bandpass_Adjustment/Excel_File_BA.xlsx'
 file1 = pd.read_excel(excel_file,sheet_name='Sheet1')  
 
 # Bandpass Adjustment of MSI 443nm band. 
@@ -233,7 +233,7 @@ for train_index, test_index in kf.split(x_batch):
             sess.run(tf.global_variables_initializer())    
             
             print("startingTraining1")
-            for i in range(5):
+            for i in range(100):
         #       
                 # Batch Normalizatin##############################################3##
                 rand_index = np.random.choice(len(x_vals_train), size=batch_size)
@@ -297,9 +297,12 @@ for train_index, test_index in kf.split(x_batch):
             Pre_Data = np.append (Pre_Data,y_pred_batch ) #Pre_Data = np.append (Pre_Data,y_pred_batch )
             OLI_Data = np.append (OLI_Data,y_vals_test )  # This data is to check the model performamce 
             
-            v= x_vals_test
-            v= np.reshape(v, [len(v),3])
-            MSI_Data= np.append (MSI_Data, v )    # Ref
+            # v= x_vals_test
+            # v= np.reshape(v, [len(v),3])
+            # MSI_Data= np.append (MSI_Data, v )    # Ref
+            
+            msi_ref = x_vals_test[:, 0]   # raw MSI band used for plotting/comparison
+            MSI_Data = np.append(MSI_Data, msi_ref)
             #reg = linear_model.LinearRegression().fit(np.reshape(x_vals_train1[:,2], [len(x_vals_train1[:,2]),1]), y_vals_train1)
             reg = linear_model.LinearRegression().fit(np.reshape(x_vals_train1, [len(x_vals_train1),3]), y_vals_train1)
             #lin= reg.predict(np.reshape(x_vals_test[:,2], [len(x_vals_test[:,2]),1]))
