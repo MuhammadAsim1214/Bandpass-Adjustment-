@@ -10,5 +10,7 @@ https://ieeexplore.ieee.org/document/9980426
 Global spectral harmonization of Landsat-8 and Sentinel-2 water-leaving reflectances in oceanic, coastal and inland waters: impact on improving the retrieval of water quality indicators.
 M. Asim, et al. (2023).  IEEE Transactions on Geoscience and Remote Sensing, 2023 (in review).
 
+Follow the bandpass_adjustment_setup.txt to run the code
+
 
 
