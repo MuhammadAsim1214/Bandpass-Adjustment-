@@ -34,7 +34,7 @@ R2_Test_All=[]
 
 # Excel File where OLI and MSi Rrs data are provided in columns
 
-excel_file = 'C:/Users/muham/Downloads/Bandpass_Adjustment/Excel_File_BA.xlsx'
+excel_file = 'C:/Users/./Bandpass_Adjustment/Excel_File_BA.xlsx'
 file1 = pd.read_excel(excel_file,sheet_name='Sheet1')  
 
 # Bandpass Adjustment of MSI 443nm band. 
