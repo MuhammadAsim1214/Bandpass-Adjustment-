@@ -1,0 +1,107 @@
+Bandpass Adjustment Code – Setup and Run Guide
+
+Project folder example: C:_Adjustment
+
+1. Install Python
+
+Install Python 3.7.9 (64-bit) from:
+https://www.python.org/downloads/release/python-379/
+
+During installation make sure: [✓] Add Python to PATH is checked.
+
+2. Open Terminal in the Project Folder
+
+Open PowerShell or VS Code terminal and run:
+
+cd C:_Adjustment
+
+3. Create a Virtual Environment
+
+Run:
+
+C:.exe -m venv venv
+
+4. Activate the Virtual Environment
+
+Run:
+
+venv
+
+Your terminal should now show: (venv)
+
+5. Upgrade pip and build tools
+
+Run:
+
+python -m pip install –upgrade pip setuptools wheel
+
+6. Install Project Dependencies
+
+Make sure a file named requirements.txt exists in the project folder.
+
+Then run:
+
+pip install -r requirements.txt
+
+Example requirements.txt:
+
+numpy==1.19.5 pandas==1.3.5 matplotlib==3.5.3 scipy==1.7.3
+scikit-learn==1.0.2 seaborn==0.11.2 tensorflow==1.15.0 protobuf==3.20.3
+openpyxl==3.1.2 xlrd==2.0.1
+
+7. Fix TensorFlow protobuf issue (important)
+
+If TensorFlow fails to import, run:
+
+pip uninstall -y protobuf pip install protobuf==3.20.3
+
+8. Set Excel File Path in the Script
+
+In BA_Rrs.py, make sure the Excel path looks like:
+
+excel_file = r’C:_Adjustment_File_BA.xlsx’
+
+9. Ensure Correct Excel Column Usage
+
+Use the defined column variables:
+
+x_vals_train1 = np.array(file1[MSI_Band]) y_vals_train1 =
+np.array(file1[OLI_Band])
+
+10. Run the Script
+
+Execute:
+
+python BA_Rrs.py
+
+11. If TensorFlow Still Throws a Protobuf Error
+
+Run the script with:
+
+set PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python python BA_Rrs.py
+
+12. Expected Output
+
+The script will: • Train the neural network • Perform 5-fold cross
+validation • Compute RMSE, MAPD, R2 and other statistics • Generate
+plots comparing MSI and OLI reflectance • Save results to text files and
+figures
+
+13. Output Files
+
+The script will generate:
+
+Results_.txt No BA-Band.png Conversion-MSI-OLI*.png Histograms and other
+figures
+
+14. Important Notes
+
+• MSI may contain multiple feature columns for training. • OLI is the
+target variable. • For plotting comparisons, only the original MSI band
+should be used.
+
+Example:
+
+msi_ref = x_vals_test[:,0] MSI_Data = np.append(MSI_Data, msi_ref)
+
+End of guide.
