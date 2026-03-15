@@ -3,6 +3,9 @@ Bandpass Adjustment Code – Setup and Run Guide
 1.  Install Python Install Python 3.7.9 (64-bit):
     https://www.python.org/downloads/release/python-379/ During
     installation make sure: [✓] Add Python to PATH is checked.
+1.1 Add the path to the environmental variable for example:
+    C:\Users\.\AppData\Local\Programs\Python\Python37\
+    C:\Users\..\AppData\Local\Programs\Python\Python37\Scripts\
 
 2.  Open Terminal in the Project Folder Open PowerShell or VS Code
     terminal and run: cd C:
